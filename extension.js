@@ -6,7 +6,7 @@ function activate(context) {
     // Paths to the GIFs
     const inhaleGifUri = vscode.Uri.joinPath(context.extensionUri, 'assets', 'inhale.gif');
     const walkGifUri = vscode.Uri.joinPath(context.extensionUri, 'assets', 'walk.gif');
-    const swapGifUri = vscode.Uri.joinPath(context.extensionUri, 'assets', 'swap.gif');
+    const swapGifUri = vscode.Uri.joinPath(context.extensionUri, 'assets', 'bike.gif');
 
     // Function to make Kirby walk across a random line
     function makeKirbyWalk() {
