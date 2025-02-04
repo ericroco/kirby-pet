@@ -6,7 +6,7 @@ function activate(context) {
     // Paths to the GIFs
     const inhaleGifUri = vscode.Uri.joinPath(context.extensionUri, 'assets', 'inhale.gif');
     const walkGifUri = vscode.Uri.joinPath(context.extensionUri, 'assets', 'walk.gif');
-    const swapGifUri = vscode.Uri.joinPath(context.extensionUri, 'assets', 'bike.gif');
+    const swapGifUri = vscode.Uri.joinPath(context.extensionUri, 'assets', 'swap.gif');
 
     // Function to make Kirby walk across a random line
     function makeKirbyWalk() {
@@ -16,8 +16,6 @@ function activate(context) {
             return;
         }
 
-
-        
         // Get the document and calculate total lines
         const document = editor.document;
         const totalLines = document.lineCount;
@@ -198,8 +196,20 @@ function activate(context) {
         }
     }
 
-    // Trigger Kirby's appearance immediately for debugging
-    makeKirbyWalk();
+    // Schedule Kirby's random appearances
+    function scheduleKirbyAppearance() {
+        setInterval(() => {
+            // Generate a random delay between 0 and 5 minutes (in milliseconds)
+            const randomDelay = Math.random() * 5 * 60 * 1000;
+
+            setTimeout(() => {
+                makeKirbyWalk();
+            }, randomDelay);
+        }, 5 * 60 * 1000); // Repeat every 5 minutes
+    }
+
+    // Start scheduling Kirby's appearances
+    scheduleKirbyAppearance();
 }
 
 function deactivate() {
